@@ -37,6 +37,12 @@ public IndexServlet() {
         response.getWriter().append(Integer.valueOf(messages.size()).toString());
 
         em.close();
+        
+        request.setAttribute("messages", messages);
+        
+        //indexのビューを返す
+        var rd = request.getRequestDispatcher("/WEB-INF/views/messages/index.jsp");
+        rd.forward(request, response);
     }
 
 }
